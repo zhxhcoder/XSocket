@@ -1,4 +1,4 @@
-package com.zhxh.android.xsocket;
+package com.zhxh.xsocket;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
