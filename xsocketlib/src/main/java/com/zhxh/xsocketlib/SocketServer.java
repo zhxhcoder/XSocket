@@ -28,13 +28,13 @@ public class SocketServer {
         // TODO Auto-generated constructor stub
         try {
             mServerSocket = new ServerSocket(PORT);
-            System.out.println("------Server Satrted------");
+            System.out.println("------Server Started------");
             mSocket = mServerSocket.accept();
             in = new BufferedReader(new InputStreamReader(
                     mSocket.getInputStream()));
             // out = new PrintWriter(mSocket.getOutputStream(), true);
             String line = in.readLine();
-            System.out.println("you sent msg is " + line);
+            System.out.println("the msg you sent is " + line);
             // out.close();
             in.close();
             mSocket.close();
