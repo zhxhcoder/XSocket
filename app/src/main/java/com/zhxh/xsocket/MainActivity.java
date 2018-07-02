@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PORT = 5252;
     private Socket socket;
     private PrintWriter out;
-    // private BufferedReader in;
+    //private BufferedReader in;
     private String getText;
 
     @Override
@@ -32,35 +32,27 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
         btnSend = findViewById(R.id.btnSend);
         //开启新线程访问网络，否则会报错
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                try {
-                    socket = new Socket(HOST, PORT);
-                    // in = new BufferedReader(new InputStreamReader(
-                    // socket.getInputStream()));
-                    out = new PrintWriter(new BufferedWriter(
-                            new OutputStreamWriter(socket.getOutputStream(),
-                                    "utf-8")), true);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+        new Thread(() -> {
+            // TODO Auto-generated method stub
+            try {
+                socket = new Socket(HOST, PORT);
+                // in = new BufferedReader(new InputStreamReader(
+                // socket.getInputStream()));
+                out = new PrintWriter(new BufferedWriter(
+                        new OutputStreamWriter(socket.getOutputStream(),
+                                "utf-8")), true);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }).start();
 
-        btnSend.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                getText = editText.getText().toString();
-                if (socket.isConnected()) {
-                    if (!socket.isOutputShutdown()) {
-                        out.println(getText);
-                    }
+        btnSend.setOnClickListener(v -> {
+            // TODO Auto-generated method stub
+            getText = editText.getText().toString();
+            if (socket.isConnected()) {
+                if (!socket.isOutputShutdown()) {
+                    out.println(getText);
                 }
             }
         });
