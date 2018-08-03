@@ -10,8 +10,6 @@ import com.zhxh.xsocketlib.socket.OnDataReceivedListener;
 import com.zhxh.xsocketlib.socket.SocketData;
 import com.zhxh.xsocketlib.socket.SocketParser;
 
-import java.util.ArrayList;
-
 public class SocketActivity extends AppCompatActivity {
 
     final String stockCode = "000001";

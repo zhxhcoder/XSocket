@@ -157,7 +157,7 @@ public class AsyncSocketService implements ICommunicator, CompletedCallback {
                 bbl.add(bb);
                 if (!isStopHeartbeat) {
                     socket.write(bbl);
-                    socket.getServer().postDelayed(this, 5000);//AsyncSocket 内部会进行轮训操作
+                    socket.getServer().postDelayed(this, 5000);//AsyncSocket 内部会进行轮询操作
               /*      Date day = new Date();
                     SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
                     LogUtils.e("heartTime：" + df.format(day));*/
