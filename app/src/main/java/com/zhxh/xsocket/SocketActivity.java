@@ -30,6 +30,8 @@ public class SocketActivity extends AppCompatActivity {
 
         tvSocket = findViewById(R.id.tvSocket);
 
+        //链接 socket
+        connectionSocket();
 
         socketListener = new OnDataReceivedListener() {
             @Override
@@ -54,6 +56,20 @@ public class SocketActivity extends AppCompatActivity {
                 Log.d(TAG, "onDisconnected ");
             }
         };
+    }
+
+    /**
+     * 链接 socket
+     */
+    private void connectionSocket() {
+
+        boolean socketInit = socket == null || !socket.isConnection();
+        if (socketInit) {
+            socket = new AsyncSocketService();
+            socket.setEndpoint(Consts.HOST_NAME, Consts.PORT, SocketParser.requestHeartbeatData(Consts.userToken, Consts.deviceID, Consts.msgType));
+            socket.setListener(socketListener);
+            socket.connection();
+        }
     }
 
     /**

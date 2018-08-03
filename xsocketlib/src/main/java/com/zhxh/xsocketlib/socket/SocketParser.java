@@ -10,6 +10,9 @@ import java.util.ArrayList;
  * Created by zhxh on 2018/8/3
  */
 public class SocketParser {
+    static String token;
+    static String deviceID;
+
     /**
      * 接收到的所有socket数据,需要循环按条取出，防止粘包
      */
@@ -22,12 +25,15 @@ public class SocketParser {
      *
      * @return 协议
      */
-    public static String requestHeartbeatData() {
+    public static String requestHeartbeatData(String token, String deviceID, String msgType) {
+
+        SocketParser.token = token;
+        SocketParser.deviceID = deviceID;
         JSONObject object = new JSONObject();
         try {
-            object.put("niuguToken", Consts.userToken);
-            object.put("deviceID", toUTF8Str(Consts.deviceID));
-            object.put("msgType", Consts.msgType);
+            object.put("niuguToken", token);
+            object.put("deviceID", deviceID);
+            object.put("msgType", msgType);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -59,8 +65,8 @@ public class SocketParser {
     private static String subscriptionData(int responseType, ArrayList<SocketData> stockList) {
         JSONObject object = new JSONObject();
         try {
-            object.put("niuguToken", Consts.userToken);
-            object.put("deviceID", toUTF8Str(Consts.deviceID));
+            object.put("niuguToken", token);
+            object.put("deviceID", toUTF8Str(deviceID));
             object.put("packettype", "1");
             object.put("msgType", "1");
             object.put("pageID", String.valueOf(responseType));
@@ -96,8 +102,8 @@ public class SocketParser {
     private static String unsubscribeData(int responseType, ArrayList<SocketData> stockList) {
         JSONObject object = new JSONObject();
         try {
-            object.put("niuguToken", Consts.userToken);
-            object.put("deviceID", toUTF8Str(Consts.deviceID));
+            object.put("niuguToken", token);
+            object.put("deviceID", toUTF8Str(deviceID));
             object.put("packettype", "1");
             object.put("msgType", "2");
             object.put("pageID", String.valueOf(responseType));
