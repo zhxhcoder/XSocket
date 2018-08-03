@@ -35,6 +35,8 @@ public class SocketActivity extends AppCompatActivity {
             @Override
             public void onReceiveData(String data) {
                 SocketData socketData = SocketParser.parseData(data);
+                tvSocket.append(data);
+                tvSocket.append("\n");
                 tvSocket.append(socketData.getInnerCode());
                 tvSocket.append("\n");
                 tvSocket.append(socketData.getNewPrice());
