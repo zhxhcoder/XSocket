@@ -62,6 +62,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.koushikdutta.async:androidasync:2.2.1'
 }
 
 def siteUrl = 'https://github.com/zhxhcoder/XSocket'   //项目的主页
