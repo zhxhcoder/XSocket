@@ -23,7 +23,6 @@ public class SocketActivity extends AppCompatActivity {
 
     AsyncSocketService socket;
     OnDataReceivedListener socketListener;
-    ArrayList<SocketData> stockListSocket = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
