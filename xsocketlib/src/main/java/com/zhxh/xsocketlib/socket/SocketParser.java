@@ -54,6 +54,7 @@ public class SocketParser {
         ArrayList<SocketData> stockList = new ArrayList<>();
         SocketData data = new SocketData();
         data.setStockCode(stockCode);
+        data.setStockMarket(stockMarket);
         stockList.add(data);
         return subscriptionData(responseType, stockList);
     }
@@ -131,7 +132,7 @@ public class SocketParser {
     }
 
     private static String getStockMarketType(String marketID) {
-        switch (marketID) {
+            switch (marketID) {
             case "3":
                 return "SH";
 

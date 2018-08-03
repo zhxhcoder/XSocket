@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class SocketActivity extends AppCompatActivity {
 
+    final String stockCode = "000001";
+    final String stockMarket = "3";
     final String TAG = "zhxhDebug";
 
     TextView tvSocket;
@@ -79,7 +81,7 @@ public class SocketActivity extends AppCompatActivity {
         if (null == socket) {
             return;
         }
-        socket.sendData(SocketParser.requestSubscriptionData(SocketParser.ZS_PAGE_TYPE, stockListSocket));
+        socket.sendData(SocketParser.requestSubscriptionData(SocketParser.ZS_PAGE_TYPE, stockCode, stockMarket));
     }
 
     /**
@@ -89,7 +91,7 @@ public class SocketActivity extends AppCompatActivity {
         if (null == socket) {
             return;
         }
-        socket.sendData(SocketParser.requestUnsubscribeData(SocketParser.ZS_PAGE_TYPE, stockListSocket));
+        socket.sendData(SocketParser.requestUnsubscribeData(SocketParser.ZS_PAGE_TYPE, stockCode, stockMarket));
     }
 
     @Override
