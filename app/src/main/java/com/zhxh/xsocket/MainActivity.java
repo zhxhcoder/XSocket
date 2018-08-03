@@ -35,21 +35,21 @@ public class MainActivity extends AppCompatActivity {
         btnSend = findViewById(R.id.btnSend);
         btnSocket = findViewById(R.id.btnSocket);
         //开启新线程访问网络，否则会报错
-        //new Thread(() -> {
-        //    // TODO Auto-generated method stub
-        //    try {
-        //        socket = new Socket(HOST, PORT);
-        //        // in = new BufferedReader(new InputStreamReader(
-        //        // socket.getInputStream()));
-        //        out = new PrintWriter(new BufferedWriter(
-        //                new OutputStreamWriter(socket.getOutputStream(),
-        //                        "utf-8")), true);
-        //    } catch (IOException e) {
-        //        // TODO Auto-generated catch block
-        //        e.printStackTrace();
-        //    }
-        //}).start();
-//
+        new Thread(() -> {
+            // TODO Auto-generated method stub
+            try {
+                socket = new Socket(HOST, PORT);
+                // in = new BufferedReader(new InputStreamReader(
+                // socket.getInputStream()));
+                out = new PrintWriter(new BufferedWriter(
+                        new OutputStreamWriter(socket.getOutputStream(),
+                                "utf-8")), true);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }).start();
+
         btnSend.setOnClickListener(v -> {
             // TODO Auto-generated method stub
             getText = editText.getText().toString();
