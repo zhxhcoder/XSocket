@@ -45,7 +45,7 @@ public class SocketParser {
      * 请求协议 订阅
      *
      * @param responseType 不传则默认1表示量化所需常用数据，会推送responseType=1的数据。
-     *                     101表示个股分时页面，102表示买卖页面，103表示指数页，保留到199。会推送responseType=pageID的数据。
+     * 103表示指数页，保留到199。会推送responseType=pageID的数据。
      * @param stockCode    股票代码
      * @param stockMarket  股票市场
      * @return 协议
