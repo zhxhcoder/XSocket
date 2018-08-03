@@ -2,6 +2,8 @@ package com.zhxh.xsocket;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.zhxh.xsocketlib.socket.AsyncSocketService;
 import com.zhxh.xsocketlib.socket.OnDataReceivedListener;
@@ -12,10 +14,13 @@ import java.util.ArrayList;
 
 public class SocketActivity extends AppCompatActivity {
 
+    final String TAG = "zhxhDebug";
+
+    TextView tvSocket;
+
+
     AsyncSocketService socket;
-
     OnDataReceivedListener socketListener;
-
     ArrayList<SocketData> stockListSocket = null;
 
     @Override
@@ -23,22 +28,28 @@ public class SocketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_socket);
 
+        tvSocket = findViewById(R.id.tvSocket);
+
 
         socketListener = new OnDataReceivedListener() {
             @Override
             public void onReceiveData(String data) {
                 SocketData socketData = SocketParser.parseData(data);
-
+                tvSocket.append(socketData.getInnerCode());
+                tvSocket.append("\n");
+                tvSocket.append(socketData.getNewPrice());
+                tvSocket.append("\n");
+                tvSocket.append(socketData.getStockTime());
             }
 
             @Override
             public void onConnected() {
-
+                Log.d(TAG, "onConnected ");
             }
 
             @Override
             public void onDisconnected() {
-
+                Log.d(TAG, "onDisconnected ");
             }
         };
     }
