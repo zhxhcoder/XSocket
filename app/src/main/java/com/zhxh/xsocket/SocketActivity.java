@@ -102,12 +102,20 @@ public class SocketActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
+
         if (socket != null) {
             socketCancelData();
             socket.disconnect();
             socket = null;
         }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
     }
 }
