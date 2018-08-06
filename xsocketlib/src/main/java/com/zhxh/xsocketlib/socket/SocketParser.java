@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Created by zhxh on 2018/8/3
  */
 public class SocketParser {
-    static String token;
-    static String deviceID;
+    private static String token;
+    private static String deviceID;
 
     /**
      * 接收到的所有socket数据,需要循环按条取出，防止粘包
