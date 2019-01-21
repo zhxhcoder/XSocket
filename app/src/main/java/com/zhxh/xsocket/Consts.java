@@ -8,7 +8,7 @@ public class Consts {
     public final static  String deviceID="b326f539-2636-474f-83fb-248e647bda42";
     public final static  String msgType="0";
     //IP
-    public static final String HOST_NAME="subquote.huanyingzq.com";
+    public static final String HOST_NAME="xxx.xxxx.com";
     //端口号
     public static final int PORT = 8991;
 
