@@ -61,12 +61,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        btnSocket.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SocketActivity.class));
-            }
-        });
+        btnSocket.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, SocketActivity.class)));
     }
 
 }
